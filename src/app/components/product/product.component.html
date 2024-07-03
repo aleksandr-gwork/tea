@@ -1,0 +1,17 @@
+<main class="container">
+  <div class="card mb-3">
+    <div class="row g-0 align-items-center">
+      <div class="col-md-4 ">
+        <img src="{{data?.image}}" class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h1 class="card-title">{{data?.title}}</h1>
+          <p class="card-text">{{data?.description}}</p>
+          <p class="card-text display-6">{{data?.price}} руб. / 50 гр</p>
+          <a class="btn btn-primary me-3" routerLink="/order">Купить</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

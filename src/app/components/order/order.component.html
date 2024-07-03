@@ -1,0 +1,73 @@
+<main class="container pt-4 mb-5">
+  <h2 *ngIf="errorMessage? false : !orderSent" class="text-center pb-4 pt-4">Сделать заказ</h2>
+  <div class="row justify-content-center">
+    <form *ngIf="errorMessage? false : !orderSent" class="col-6" [formGroup]="orderForm" (ngSubmit)="submitOrder()">
+      <div class="form-group mb-3">
+        <label for="name">Имя</label>
+        <input type="text" id="name" formControlName="name" class="form-control">
+        <div *ngIf="orderForm.get('name')?.invalid && (orderForm.get('name')?.dirty || orderForm.get('name')?.touched)">
+          <div class="text-danger">Можно вводить только буквы</div>
+        </div>
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="last_name">Фамилия</label>
+        <input type="text" id="last_name" formControlName="last_name" class="form-control">
+        <div *ngIf="orderForm.get('last_name')?.invalid && (orderForm.get('last_name')?.dirty || orderForm.get('last_name')?.touched)">
+          <div class="text-danger">Можно вводить только буквы</div>
+        </div>
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="phone">Телефон</label>
+        <input type="text" id="phone" formControlName="phone" class="form-control">
+        <div *ngIf="orderForm.get('phone')?.invalid && (orderForm.get('phone')?.dirty || orderForm.get('phone')?.touched)">
+          <div class="text-danger">Можно вводить только цифры и знак +, 11 цифр</div>
+        </div>
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="country">Город</label>
+        <input type="text" id="country" formControlName="country" class="form-control">
+        <div *ngIf="orderForm.get('country')?.invalid && (orderForm.get('country')?.dirty || orderForm.get('country')?.touched)">
+          <div class="text-danger">Можно вводить буквы, цифры, пробелы, дефис и слеш</div>
+        </div>
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="zip">Индекс</label>
+        <input type="text" id="zip" formControlName="zip" class="form-control">
+        <div *ngIf="orderForm.get('zip')?.invalid && (orderForm.get('zip')?.dirty || orderForm.get('zip')?.touched)">
+          <div class="text-danger">Можно только вводить цифры</div>
+        </div>
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="address">Адрес</label>
+        <input type="text" id="address" formControlName="address" class="form-control">
+        <div *ngIf="orderForm.get('address')?.invalid && (orderForm.get('address')?.dirty || orderForm.get('address')?.touched)">
+          <div class="text-danger">Можно вводить буквы, цифры, пробелы, дефис и слеш</div>
+        </div>
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="product">Продукт</label>
+        <input type="text" id="product" formControlName="product" class="form-control">
+        <div *ngIf="!orderForm.get('product')?.value">
+          <div class="text-danger">Выберите чай</div>
+        </div>
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="comment">Комментарий</label>
+          <textarea id="comment" rows="5" formControlName="comment" class="form-control"></textarea>
+      </div>
+
+      <button [disabled]="disableButton" type="submit" class="btn btn-primary mb-3">Отправить заказ</button>
+    </form>
+    <div *ngIf="errorMessage" class="align-items-center justify-content-center text-danger display-1 text-center">Произошла ошибка. <br> Попробуйте еще раз.</div>
+    <div *ngIf="orderSent" class="align-items-center justify-content-center text-success display-1 text-center">Спасибо за заказ!</div>
+
+
+  </div>
+</main>

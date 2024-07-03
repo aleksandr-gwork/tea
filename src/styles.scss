@@ -7,3 +7,44 @@
 body {
   font-family: Arial, sans-serif;
 }
+
+app-root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.ui-icon-caret-1-e {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  display: inline-block;
+  width: 20px;
+  transform: translateY(-50%);
+  transition: .3s all ease-in;
+  background: url("assets/img/down.svg") no-repeat;
+}
+.ui-icon-caret-1-s {
+  background: url("assets/img/up.svg") no-repeat;
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  display: inline-block;
+  width: 20px;
+  transform: translateY(-50%);
+  transition: .3s all ease-in;
+}
+
+.ui-state-active .ui-icon,
+.ui-button:active .ui-icon{
+  background-image: url("assets/img/down.svg");
+  transform: rotate(180deg) translateY(30%);
+}
+
+.ui-state-hover .ui-icon,
+.ui-button:hover .ui-icon {
+  background-image: url("assets/img/down.svg");
+  transform: rotate(180deg) translateY(30%);
+}

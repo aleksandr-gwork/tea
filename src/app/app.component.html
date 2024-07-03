@@ -1,9 +1,7 @@
-<!-- header -->
-<header>
-  <!-- navbar -->
+<header class="mb-auto">
   <nav class="navbar navbar-expand-md bg-body-tertiary mb-5">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Logo</a>
+    <div class="container">
+      <a class="navbar-brand" routerLink="/">Logo</a>
       <button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
               data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
         <span class="navbar-toggler-icon"></span>
@@ -11,246 +9,31 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav me-auto">
           <li class="nav-item">
-            <a aria-current="page" class="nav-link active" href="#">Главная</a>
+            <a [ngClass]="{'nav-link': true, 'text-secondary': !rla1.isActive, 'active':rla1.isActive}" routerLink="/"
+               routerLinkActive #rla1="routerLinkActive" [routerLinkActiveOptions]={exact:true}>Главная</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-secondary" href="#">Преимущества</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-secondary" href="#">Цены</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-secondary" href="#">Контакты</a>
+            <a [ngClass]="{'nav-link': true, 'text-secondary': !rla2.isActive, 'active':rla2.isActive}"
+               routerLink="/catalog" routerLinkActive #rla2="routerLinkActive">Каталог</a>
           </li>
         </ul>
         <form class="d-flex gap-2" role="search">
-          <input aria-label="Search" class="form-control" placeholder="Поиск чая" type="search">
-          <button class="btn btn-outline-primary" type="button">Найти</button>
+          <input
+            [(ngModel)]="query" placeholder="Поиск чая" name="query"
+            aria-label="Search" class="form-control" >
+          <button (click)="search()" class="btn btn-outline-primary" type="button">Найти</button>
+          <button *ngIf="query" (click)="clearSearch()" class="btn btn-outline-secondary" type="button">Сбросить</button>
         </form>
       </div>
     </div>
   </nav>
 </header>
-<!--main-->
-<main  class="w-100">
-  <div class="container pb-5">
-    <div class="d-flex align-items-center justify-content-center">
-      <div class="col-1 d-none d-sm-block">
-        <img alt="" src="assets/img/chay-1.png">
-      </div>
-      <div class="col-6">
-        <h2 class="text h1">Скидки на травяные чаи</h2>
-        <p class="my-5">Узнай все подробности, заполнив заявку</p>
-        <a class="btn btn-primary px-5" href="#">Заказать</a>
-      </div>
-      <div class="col-5"></div>
-    </div>
-  </div>
 
-  <!-- Grid section -->
-  <div class="container pt-4 pb-4">
-    <h2 class="text-center pb-4">Наши чайные коллекции</h2>
-    <div class="row g-4 row-cols-1 row-cols-md-2 row-cols-lg-3">
-      <div class="col">
-        <div class="card">
-          <img class="card-img-top" src="assets/img/item-1.png">
-          <div class="card-body">
-            <h5 class="card-title">Детокс чай лайм</h5>
-            <p class="card-text">Великолепный чай внесет в вашу жизнь яркие краски и вкус
-              расслабления
-            </p>
-          </div>
-          <div class="card-footer bg-body border-top-0 pt-0 pb-3">
-            <a class="btn btn-primary px-4" href="#">Подробнее</a>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card">
-          <img class="card-img-top" src="assets/img/item-2.png">
-          <div class="card-body">
-            <h5 class="card-title">Ягодный чай</h5>
-            <p class="card-text">Нотки ягод позволят вам расслабиться и насладиться великолепием
-              этого
-              чая
-            </p>
-          </div>
-          <div class="card-footer bg-body border-top-0 pt-0 pb-3">
-            <a class="btn btn-primary px-4" href="#">Подробнее</a>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100">
-          <img class="card-img-top" src="assets/img/item-3.png">
-          <div class="card-body">
-            <h5 class="card-title">Цветочный чай</h5>
-            <p class="card-text">Душистые цветы создают невероятный аромат и наполняют вас энергией
-            </p>
-          </div>
-          <div class="card-footer bg-body border-top-0 pt-0 pb-3">
-            <a class="btn btn-primary px-4" href="#">Подробнее</a>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100">
-          <img class="card-img-top" src="assets/img/item-4.png">
-          <div class="card-body">
-            <h5 class="card-title">Очищающий чай</h5>
-            <p class="card-text">Бесподобный чай для получения утреннего заряда бодрости</p>
-          </div>
-          <div class="card-footer bg-body border-top-0 pt-0 pb-3">
-            <a class="btn btn-primary px-4" href="#">Подробнее</a>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100">
-          <img class="card-img-top" src="assets/img/item-5.png">
-          <div class="card-body">
-            <h5 class="card-title">Кислый чай</h5>
-            <p class="card-text">Кислый чай для настоящих ценителей кислинки во время чаепития</p>
-          </div>
-          <div class="card-footer bg-body border-top-0 pt-0 pb-3">
-            <a class="btn btn-primary px-4" href="#">Подробнее</a>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100">
-          <img class="card-img-top" src="assets/img/item-6.png">
-          <div class="card-body">
-            <h5 class="card-title">Лимонная мята</h5>
-            <p class="card-text">Смесь лимона с мятой сделает ваш день самым лучшим</p>
-          </div>
-          <div class="card-footer bg-body border-top-0 pt-0 pb-3">
-            <a class="btn btn-primary px-4" href="#">Подробнее</a>
-          </div>
-        </div>
-      </div>
-    </div>
 
-  </div>
-  <!-- /Grid section -->
+<router-outlet></router-outlet>
 
-  <!-- jQuery-Accordion -->
-  <div class="container pt-4 mb-4">
-    <h2 class="text-center pb-4">Ответы на часто задаваемые вопросы</h2>
-    <div id="accordion">
-      <div class="accordion-item">
-        <div class="accordion-header bg-primary rounded-2 text-white py-3 mt-3">
-          Собираете ли вы подарочные боксы?
-        </div>
-        <div class="border-0 pb-0">
-          <p>
-            Да, у нас есть такая услуга. Мы можем собрать подарочный бокс на любой вкус, объем и
-            стоимость!
-          </p>
-        </div>
-      </div>
-      <div class="accordion-item">
-        <div class="accordion-header bg-primary rounded-2 text-white py-3 mt-3">Сколько у вас разновидностей
-          чая?
-        </div>
-        <div class="border-0 pb-0">
-          <p>
-            Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet
-            purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor
-            velit, faucibus interdum tellus libero ac justo. Vivamus non quam. In
-            suscipit faucibus urna.
-          </p>
-        </div>
-      </div>
-      <div class="accordion-item">
-        <div class="accordion-header bg-primary rounded-2 text-white py-3 mt-3">В какой срок осуществляется
-          доставка?
-        </div>
-        <div class="border-0 pb-0">
-          <p>
-            Nam enim risus, molestie et, porta ac, aliquam ac, risus. Quisque lobortis.
-            Phasellus pellentesque purus in massa. Phasellus ac libero
-            ac tellus pellentesque semper. Sed ac felis. Sed commodo, magna quis
-            lacinia ornare, quam ante aliquam nisi, eu iaculis leo purus venenatis dui.
-          </p>
-        </div>
-      </div>
-      <div class="accordion-item">
-        <div class="accordion-header bg-primary rounded-2 text-white py-3 mt-3">У вас обновляется
-          ассортимент?
-        </div>
-        <div class="border-0 pb-0">
-          <p>
-            Cras dictum. Pellentesque habitant morbi tristique senectus et netus
-            et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in
-            faucibus orci luctus et ultrices posuere cubilia Curae; Aenean lacinia
-            mauris vel est.
-          </p>
-          <p>
-            Suspendisse eu nisl. Nullam ut libero. Integer dignissim consequat lectus.
-            Class aptent taciti sociosqu ad litora torquent per conubia nostra, per
-            inceptos himenaeos.
-          </p>
-        </div>
-      </div>
-      <div class="accordion-item">
-        <div class="accordion-header bg-primary rounded-2 text-white py-3 mt-3">Какого объема у вас пачки
-          чая?
-        </div>
-        <div class="border-0 pb-0">
-          <p>
-            Suspendisse eu nisl. Nullam ut libero. Integer dignissim consequat lectus.
-            Class aptent taciti sociosqu ad litora torquent per conubia nostra, per
-            inceptos himenaeos.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- /jQuery-Accordion -->
-
-  <!-- Form section -->
-  <div class="container pt-4 mb-5">
-    <h2 class="text-center pb-4 pt-4">Сделать заказ</h2>
-    <div class="row justify-content-center">
-      <form class="row col-lg-6" id="form">
-        <div class="mb-3 col-md-4">
-          <label for="firstName">Имя</label>
-          <input class="form-control" id="firstName" name="firstName" required type="text">
-        </div>
-        <div class="mb-3 col-md-4">
-          <label for="lastName">Фамилия</label>
-          <input class="form-control" id="lastName" name="lastName" required type="text">
-        </div>
-        <div class="mb-3 col-md-4">
-          <label for="phone">Телефон</label>
-          <input class="form-control" id="phone" name="phone" required type="tel">
-        </div>
-        <div class="mb-3 col-md-6">
-          <label for="country">Страна</label>
-          <input class="form-control" id="country" name="country" required type="text">
-        </div>
-        <div class="mb-3 col-md-6">
-          <label for="index">Индекс</label>
-          <input class="form-control" id="index" name="index" required type="text">
-        </div>
-        <div class="mb-3 col-md-12">
-          <label for="address">Адрес</label>
-          <input class="form-control" id="address" name="address" required type="text">
-          <button class="btn btn-primary my-4 px-4" id="submitBtn" type="button">Отправить</button>
-        </div>
-      </form>
-      <div class="bg-primary text-white py-3 text-center display-6 d-none rounded-2" id="thanksBlock">
-        <p>Спасибо за заказ. <br> Мы свяжемся с вами в ближайшее время!</p>
-      </div>
-    </div>
-  </div>
-  <!-- /Form section -->
-
-</main>
-<!--footer-->
-<footer class="bg-body-tertiary py-3">
-  <div class="container-fluid">
-    <span class="text-secondary">Все права защищены</span>
+<footer class="footer mt-auto py-3 bg-body-tertiary">
+  <div class="container">
+    <span class="text-body-secondary">Все права защищены</span>
   </div>
 </footer>

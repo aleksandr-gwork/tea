@@ -1,0 +1,17 @@
+<main class="container pt-4 pb-4">
+  <h2 class="text-center pb-4">{{header}}</h2>
+  <div class="row g-4 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
+    <div class="col" *ngFor="let tea of data">
+      <div class="card">
+        <img class="card-img-top" src="{{tea.image}}">
+        <div class="card-body">
+          <h5 class="tea-title card-title">{{ tea.title }}</h5>
+          <p class="tea-desc card-text">{{ tea.description }}</p>
+        </div>
+        <div class="card-footer bg-body border-top-0 pt-0 pb-3 bottom">
+          <a class="btn btn-primary px-4" routerLink="/catalog/product/{{tea.id}}">Подробнее</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
