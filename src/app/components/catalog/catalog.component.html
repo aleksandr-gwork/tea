@@ -9,7 +9,7 @@
           <p class="tea-desc card-text">{{ tea.description }}</p>
         </div>
         <div class="card-footer bg-body border-top-0 pt-0 pb-3 bottom">
-          <a class="btn btn-primary px-4" routerLink="/catalog/product/{{tea.id}}">Подробнее</a>
+          <a class="btn btn-primary px-4" routerLink="/catalog/product/" [queryParams]="{tea: tea.title, id:tea.id}">Подробнее</a>
         </div>
       </div>
     </div>

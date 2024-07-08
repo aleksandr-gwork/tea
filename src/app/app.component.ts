@@ -8,18 +8,18 @@ import {Router} from "@angular/router";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  query = '';
+  query = ''; // переменная для хранения значения в поле поиска
 
   constructor(private searchService: SearchService, private router: Router) {
   }
 
   search() {
-    this.searchService.setSearch(this.query);
-    this.router.navigate(['/catalog']);
+    this.searchService.setSearch(this.query); // -> установка поискового запроса
+    this.router.navigate(['/catalog']); // переход на страницу каталога
   }
 
   clearSearch() {
-    this.searchService.clearSearch();
-    this.query = '';
+    this.searchService.clearSearch(); // -> очистка поискового запроса
+    this.query = ''; // очищаем поле поиска
   }
 }

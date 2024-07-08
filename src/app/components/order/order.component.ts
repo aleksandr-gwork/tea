@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
 import {CartService} from "../../services/cart.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-order',
@@ -10,15 +10,21 @@ import {Router} from "@angular/router";
   styleUrls: ['./order.component.scss']
 })
 export class OrderComponent implements OnInit {
-  orderForm!: FormGroup;
-  orderSent = false;
-  errorMessage = false;
-  disableButton = false;
+  title: string | null | undefined;
+  orderForm!: FormGroup; // объявляем FormGroup
+  orderSent = false; // переменная для отображения сообщения об успешной отправке
+  errorMessage = false; // переменная для отображения сообщения об ошибке
+  disableButton = false; // переменная для отключения кнопки "Заказать"
 
-  constructor(private fb: FormBuilder, private http: HttpClient, private cartService: CartService, private router: Router) {
+  constructor(private fb: FormBuilder, private http: HttpClient, private cartService: CartService, private router: Router,
+              private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit(): void {
+    this.title = this.activatedRoute.snapshot.queryParamMap.get('tea');
+    if (!this.title) {
+      this.router.navigate(['/']);
+    }
 
     this.orderForm = this.fb.group({
       name: ['', [Validators.required, Validators.pattern('[а-яА-Яa-zA-Z]*')]],
@@ -27,15 +33,15 @@ export class OrderComponent implements OnInit {
       country: ['', [Validators.required, Validators.pattern('[а-яА-Яa-zA-Z0-9\\s\\-\\/]*')]],
       zip: ['', [Validators.required, Validators.pattern('^[0-9]{6}$')]],
       address: ['', [Validators.required, Validators.pattern('[а-яА-Яa-zA-Z0-9\\s\\-\\/]*')]],
-      product: [{value: this.cartService.getProductTitle(), disabled: true}],
+      product: [{value: this.title, disabled: true}],
       comment: ['']
     });
   }
 
   submitOrder() {
-    if (this.orderForm.valid) {
-      const orderData = this.orderForm.getRawValue();
-      this.disableButton = true;
+    if (this.orderForm.valid) { // если форма валидна
+      const orderData = this.orderForm.getRawValue(); // получаем данные из формы
+      this.disableButton = true; // отключаем кнопку "Заказать"
       this.http.post<any>('https://testologia.ru/order-tea', orderData).subscribe(
         response => {
           if (response.success === 1) {

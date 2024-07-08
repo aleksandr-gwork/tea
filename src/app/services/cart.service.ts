@@ -4,15 +4,20 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class CartService {
+  id: number | undefined;
   title: string | undefined;
 
   constructor() { }
 
-  setProductTitle(productTitle: string) {
-    this.title = productTitle;
+  setProductInfo(id: number, title: string) {
+    this.id = id;
+    this.title = title;
   }
 
-  getProductTitle() {
-    return this.title;
+  getProductInfo() {
+    return {
+      id: this.id,
+      title: this.title
+    }
   }
 }

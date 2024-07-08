@@ -25,11 +25,10 @@ export class CatalogComponent implements OnInit {
         if (!data.length ) {
           this.header = 'Ничего не найдено';
         }
-        this.data = data.filter(item => {
-          return item.title.toLowerCase().includes(query.toLowerCase());
-        });
+        this.data = data;
       })
     })
   }
+
 }
 

@@ -9,7 +9,7 @@
           <h1 class="card-title">{{data?.title}}</h1>
           <p class="card-text">{{data?.description}}</p>
           <p class="card-text display-6">{{data?.price}} руб. / 50 гр</p>
-          <a class="btn btn-primary me-3" routerLink="/order">Купить</a>
+          <a class="btn btn-primary me-3" routerLink="/order" [queryParams]="{tea: data?.title}">Купить</a>
         </div>
       </div>
     </div>
