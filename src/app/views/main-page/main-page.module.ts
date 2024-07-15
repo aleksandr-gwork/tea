@@ -1,8 +1,9 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { MainPageRoutingModule } from './main-page-routing.module';
+import {MainPageRoutingModule} from './main-page-routing.module';
 import {MainPageComponent} from "./main-page.component";
+import {ModalService} from "../../core/modal.service";
 
 
 @NgModule({
@@ -11,7 +12,11 @@ import {MainPageComponent} from "./main-page.component";
   ],
   imports: [
     CommonModule,
-    MainPageRoutingModule
-  ]
+    MainPageRoutingModule,
+  ],
+  providers: [
+    ModalService
+  ],
 })
-export class MainPageModule { }
+export class MainPageModule {
+}

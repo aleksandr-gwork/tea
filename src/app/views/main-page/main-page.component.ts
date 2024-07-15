@@ -1,6 +1,7 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {Observable, Subscription} from "rxjs";
 import {Router} from "@angular/router";
+import {ModalService} from "../../core/modal.service";
 
 declare var $: any
 
@@ -15,8 +16,9 @@ export class MainPageComponent implements OnInit, OnDestroy {
   public openModal$: Observable<void> | undefined;
   private timer: NodeJS.Timeout | undefined;
 
+  @ViewChild('modal') modal: any;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private modalService: ModalService) {
 
   }
 
@@ -29,7 +31,7 @@ export class MainPageComponent implements OnInit, OnDestroy {
 
     this.openModal$ = new Observable(() => {
       this.timer = setTimeout(() => {
-        $('#teaModal').modal('show');
+        this.modalService.open(this.modal);
       }, 10000)
     })
 
@@ -43,4 +45,5 @@ export class MainPageComponent implements OnInit, OnDestroy {
     clearTimeout(this.timer);
   }
 
+  protected readonly open = open;
 }

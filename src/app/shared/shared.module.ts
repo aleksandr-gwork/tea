@@ -23,7 +23,7 @@ import { FooterComponent } from './footer/footer.component';
     NgbDropdownModule,
     ReactiveFormsModule,
     RouterLinkActive,
-    RouterLinkWithHref
+    RouterLinkWithHref,
   ]
 })
 export class SharedModule { }
