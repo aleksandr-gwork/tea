@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
-import {CartService} from "../../services/cart.service";
 import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
@@ -16,7 +15,7 @@ export class OrderComponent implements OnInit {
   errorMessage = false; // переменная для отображения сообщения об ошибке
   disableButton = false; // переменная для отключения кнопки "Заказать"
 
-  constructor(private fb: FormBuilder, private http: HttpClient, private cartService: CartService, private router: Router,
+  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router,
               private activatedRoute: ActivatedRoute) {
   }
 

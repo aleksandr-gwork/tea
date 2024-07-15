@@ -1,40 +1,5 @@
-<header class="mb-auto">
-  <nav class="navbar navbar-expand-md bg-body-tertiary mb-5">
-    <div class="container">
-      <a class="navbar-brand" routerLink="/">Logo</a>
-      <button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
-              data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav me-auto">
-          <li class="nav-item">
-            <a [ngClass]="{'nav-link': true, 'text-secondary': !rla1.isActive, 'active':rla1.isActive}" routerLink="/"
-               routerLinkActive #rla1="routerLinkActive" [routerLinkActiveOptions]={exact:true}>Главная</a>
-          </li>
-          <li class="nav-item">
-            <a [ngClass]="{'nav-link': true, 'text-secondary': !rla2.isActive, 'active':rla2.isActive}"
-               routerLink="/catalog" routerLinkActive #rla2="routerLinkActive">Каталог</a>
-          </li>
-        </ul>
-<!--    TODO: Сделать форму реактивной    -->
-        <form class="d-flex gap-2" role="search">
-          <input
-            [(ngModel)]="query" placeholder="Поиск чая" name="query"
-            aria-label="Search" class="form-control" >
-          <button (click)="search()" class="btn btn-outline-primary" type="button">Найти</button>
-          <button *ngIf="query" (click)="clearSearch()" class="btn btn-outline-secondary" type="button">Сбросить</button>
-        </form>
-      </div>
-    </div>
-  </nav>
-</header>
-
+<app-header></app-header>
 
 <router-outlet></router-outlet>
 
-<footer class="footer mt-auto py-3 bg-body-tertiary">
-  <div class="container">
-    <span class="text-body-secondary">Все права защищены</span>
-  </div>
-</footer>
+<app-footer></app-footer>

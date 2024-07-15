@@ -48,3 +48,6 @@ app-root {
   background-image: url("assets/img/down.svg");
   transform: rotate(180deg) translateY(30%);
 }
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';

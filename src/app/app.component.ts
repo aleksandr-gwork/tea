@@ -1,25 +1,15 @@
-import {Component} from '@angular/core';
-import {SearchService} from "./services/search.service";
-import {Router} from "@angular/router";
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  query = ''; // переменная для хранения значения в поле поиска
-
-  constructor(private searchService: SearchService, private router: Router) {
+export class AppComponent implements OnInit {
+  constructor() {
   }
 
-  search() {
-    this.searchService.setSearch(this.query); // -> установка поискового запроса
-    this.router.navigate(['/catalog']); // переход на страницу каталога
+  ngOnInit() {
   }
 
-  clearSearch() {
-    this.searchService.clearSearch(); // -> очистка поискового запроса
-    this.query = ''; // очищаем поле поиска
-  }
 }

@@ -1,0 +1,28 @@
+<header class="mb-auto">
+  <nav class="navbar navbar-expand-md bg-body-tertiary mb-5">
+    <div class="container">
+      <a class="navbar-brand" routerLink="/">Logo</a>
+      <button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
+              data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a [ngClass]="{'nav-link': true, 'text-secondary': !rla1.isActive, 'active':rla1.isActive}" routerLink="/"
+               routerLinkActive #rla1="routerLinkActive" [routerLinkActiveOptions]={exact:true}>Главная</a>
+          </li>
+          <li class="nav-item">
+            <a [ngClass]="{'nav-link': true, 'text-secondary': !rla2.isActive, 'active':rla2.isActive}"
+               routerLink="/catalog" routerLinkActive #rla2="routerLinkActive">Каталог</a>
+          </li>
+        </ul>
+        <form class="d-flex gap-2" role="search" [formGroup]="searchForm" (ngSubmit)="search()">
+          <input formControlName="query" type="text" placeholder="Поиск чая" aria-label="Search" class="form-control" >
+          <button class="btn btn-outline-primary" type="submit">Найти</button>
+          <button *ngIf="searchForm.get('query')?.value" (click)="clearSearch()" class="btn btn-outline-secondary" type="button">Сбросить</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+</header>

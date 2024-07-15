@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Observable, Subscription} from "rxjs";
 import {Router} from "@angular/router";
 
-declare var $: any;
+declare var $: any
 
 @Component({
   selector: 'app-main-page',

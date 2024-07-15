@@ -1,11 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {TeaItem} from "../types/tea-item.type";
+import {TeaItem} from "../../types/tea-item.type";
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class HttpService {
   private url: string = 'https://testologia.ru/tea';
 

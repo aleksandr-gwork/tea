@@ -1,8 +1,8 @@
 import {Component, OnInit, Output} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {HttpService} from "../../services/http.service";
-import {TeaItem} from "../../types/tea-item.type";
-import {CartService} from "../../services/cart.service";
+import {HttpService} from "../../../core/http.service";
+import {TeaItem} from "../../../../types/tea-item.type";
+import {CartService} from "../../../core/cart.service";
 
 @Component({
   selector: 'app-product',
